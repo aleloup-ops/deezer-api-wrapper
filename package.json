@@ -4,7 +4,8 @@
   "description": "NodeJS wrapper for Deezer API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/aleloup-ops/deezer-api-wrapper/issues"
   },
-  "homepage": "https://github.com/aleloup-ops/deezer-api-wrapper#readme"
+  "homepage": "https://github.com/aleloup-ops/deezer-api-wrapper#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }

@@ -1,0 +1,1 @@
+export const deezerApiWrapper = (name: string) => `Hello ${name}`;
