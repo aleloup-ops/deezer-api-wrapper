@@ -1,0 +1,25 @@
+{
+  "name": "deezer-api-wrapper",
+  "version": "1.0.0",
+  "description": "NodeJS wrapper for Deezer API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleloup-ops/deezer-api-wrapper.git"
+  },
+  "keywords": [
+    "node",
+    "deezer",
+    "typescript",
+    "wrapper"
+  ],
+  "author": "aleloup-ops",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleloup-ops/deezer-api-wrapper/issues"
+  },
+  "homepage": "https://github.com/aleloup-ops/deezer-api-wrapper#readme"
+}
