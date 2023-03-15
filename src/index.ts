@@ -1,3 +1,3 @@
-export const deezerApiWrapper = (name: string) => `Hello ${name}`;
+import { DeezerAuth } from './services';
 
-export const getPlaylist = (id: string) => `Hello ${id}`;
+export { DeezerAuth };
