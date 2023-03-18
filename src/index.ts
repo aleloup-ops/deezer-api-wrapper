@@ -1,3 +1,3 @@
-import { DeezerAuth } from './services';
+import { DeezerAuth, DeezerPlaylists } from './services';
 
-export { DeezerAuth };
+export { DeezerAuth, DeezerPlaylists };

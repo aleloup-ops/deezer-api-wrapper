@@ -7,11 +7,10 @@ export class DeezerAuth {
         const query: string = `app_id=${appId}&secret=${secretId}&code=${code}`;
 
         return axiosInstance
-            .get(`oauth/access_token.php?${query}`)
+            .get(`oauth/access_token.php?${query}`, { baseURL: 'https://connect.deezer.com/' })
             .then((response: AxiosResponse) => {
-                const expiresIn: number = parseInt(response.data.split('&')[1].split('=')[1], 10);
-                const access_token: string = response.data.split('&')[0].split('=')[1];
-                setAccessToken(access_token);
+                const accessToken: string = response.data.split('&')[0].split('=')[1];
+                setAccessToken(accessToken);
                 return getAccessToken();
             })
             .catch((error: any) => {

@@ -4,12 +4,12 @@ export class Artist {
     link: string;
     share: string;
     picture: string;
-    picture_small: string;
-    picture_medium: string;
-    picture_big: string;
-    picture_xl: string;
-    nb_album: number;
-    nb_fan: number;
+    pictureSmall: string;
+    pictureMedium: string;
+    pictureBig: string;
+    pictureXl: string;
+    nbAlbum: number;
+    nbFan: number;
     radio: boolean;
     tracklist: string;
 
@@ -19,12 +19,12 @@ export class Artist {
         link: string,
         share: string,
         picture: string,
-        picture_small: string,
-        picture_medium: string,
-        picture_big: string,
-        picture_xl: string,
-        nb_album: number,
-        nb_fan: number,
+        pictureSmall: string,
+        pictureMedium: string,
+        pictureBig: string,
+        pictureXl: string,
+        nbAlbum: number,
+        nbFan: number,
         radio: boolean,
         tracklist: string,
     ) {
@@ -33,12 +33,12 @@ export class Artist {
         this.link = link;
         this.share = share;
         this.picture = picture;
-        this.picture_small = picture_small;
-        this.picture_medium = picture_medium;
-        this.picture_big = picture_big;
-        this.picture_xl = picture_xl;
-        this.nb_album = nb_album;
-        this.nb_fan = nb_fan;
+        this.pictureSmall = pictureSmall;
+        this.pictureMedium = pictureMedium;
+        this.pictureBig = pictureBig;
+        this.pictureXl = pictureXl;
+        this.nbAlbum = nbAlbum;
+        this.nbFan = nbFan;
         this.radio = radio;
         this.tracklist = tracklist;
     }

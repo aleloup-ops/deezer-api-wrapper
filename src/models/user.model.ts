@@ -6,19 +6,19 @@ export class User {
     email: string;
     status: number;
     birthday: string;
-    inscription_date: string;
+    inscriptionDate: string;
     gender: string;
     link: string;
     picture: string;
-    picture_small: string;
-    picture_medium: string;
-    picture_big: string;
-    picture_xl: string;
+    pictureSmall: string;
+    pictureMedium: string;
+    pictureBig: string;
+    pictureXl: string;
     country: string;
     lang: string;
-    is_kid: boolean;
-    explicit_content_level: number;
-    explicit_content_levels_available: number[];
+    isKid: boolean;
+    explicitContentLevel: number;
+    explicitContentLevelsAvailable: number[];
     tracklist: string;
 
     constructor(
@@ -29,19 +29,19 @@ export class User {
         email: string,
         status: number,
         birthday: string,
-        inscription_date: string,
+        inscriptionDate: string,
         gender: string,
         link: string,
         picture: string,
-        picture_small: string,
-        picture_medium: string,
-        picture_big: string,
-        picture_xl: string,
+        pictureSmall: string,
+        pictureMedium: string,
+        pictureBig: string,
+        pictureXl: string,
         country: string,
         lang: string,
-        is_kid: boolean,
-        explicit_content_level: number,
-        explicit_content_levels_available: number[],
+        isKid: boolean,
+        explicitContentLevel: number,
+        explicitContentLevelsAvailable: number[],
         tracklist: string,
     ) {
         this.id = id;
@@ -51,19 +51,19 @@ export class User {
         this.email = email;
         this.status = status;
         this.birthday = birthday;
-        this.inscription_date = inscription_date;
+        this.inscriptionDate = inscriptionDate;
         this.gender = gender;
         this.link = link;
         this.picture = picture;
-        this.picture_small = picture_small;
-        this.picture_medium = picture_medium;
-        this.picture_big = picture_big;
-        this.picture_xl = picture_xl;
+        this.pictureSmall = pictureSmall;
+        this.pictureMedium = pictureMedium;
+        this.pictureBig = pictureBig;
+        this.pictureXl = pictureXl;
         this.country = country;
         this.lang = lang;
-        this.is_kid = is_kid;
-        this.explicit_content_level = explicit_content_level;
-        this.explicit_content_levels_available = explicit_content_levels_available;
+        this.isKid = isKid;
+        this.explicitContentLevel = explicitContentLevel;
+        this.explicitContentLevelsAvailable = explicitContentLevelsAvailable;
         this.tracklist = tracklist;
     }
 }

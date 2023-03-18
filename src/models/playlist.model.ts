@@ -1,54 +1,79 @@
+import { Artist } from './artist.model';
 import { Track } from './track.model';
 import { User } from './user.model';
 
 export class Playlist {
     id: number;
     title: string;
-    description: string;
     duration: number;
     public: boolean;
-    is_loved_track: boolean;
+    isLovedTrack: boolean;
     collaborative: boolean;
-    rating: number;
+    nbTracks: number;
     fans: number;
-    release_date: string;
-    available: boolean;
+    link: string;
+    picture: string;
+    pictureSmall: string;
+    pictureMedium: string;
+    pictureBig: string;
+    pictureXl: string;
+    checksum: string;
     tracklist: string;
-    creation_date: string;
-    creator: User;
-    tracks: Track[];
+    creationDate: string;
+    md5Image: string;
+    pictureType: string;
+    timeAdd: number;
+    timeMod: number;
+    creator: Artist;
+    type: string;
 
     constructor(
         id: number,
         title: string,
-        description: string,
         duration: number,
-        is_public: boolean,
-        is_loved_track: boolean,
+        isPublic: boolean,
+        isLovedTrack: boolean,
         collaborative: boolean,
-        rating: number,
+        nbTracks: number,
         fans: number,
-        release_date: string,
-        available: boolean,
+        link: string,
+        picture: string,
+        pictureSmall: string,
+        pictureMedium: string,
+        pictureBig: string,
+        pictureXl: string,
+        checksum: string,
         tracklist: string,
-        creation_date: string,
-        creator: User,
-        tracks: Track[],
+        creationDate: string,
+        md5Image: string,
+        pictureType: string,
+        timeAdd: number,
+        timeMod: number,
+        creator: Artist,
+        type: string,
     ) {
         this.id = id;
         this.title = title;
-        this.description = description;
         this.duration = duration;
-        this.public = is_public;
-        this.is_loved_track = is_loved_track;
+        this.public = isPublic;
+        this.isLovedTrack = isLovedTrack;
         this.collaborative = collaborative;
-        this.rating = rating;
+        this.nbTracks = nbTracks;
         this.fans = fans;
-        this.release_date = release_date;
-        this.available = available;
+        this.link = link;
+        this.picture = picture;
+        this.pictureSmall = pictureSmall;
+        this.pictureMedium = pictureMedium;
+        this.pictureBig = pictureBig;
+        this.pictureXl = pictureXl;
+        this.checksum = checksum;
         this.tracklist = tracklist;
-        this.creation_date = creation_date;
+        this.creationDate = creationDate;
+        this.md5Image = md5Image;
+        this.pictureType = pictureType;
+        this.timeAdd = timeAdd;
+        this.timeMod = timeMod;
         this.creator = creator;
-        this.tracks = tracks;
+        this.type = type;
     }
 }
