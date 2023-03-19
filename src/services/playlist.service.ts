@@ -1,5 +1,5 @@
 import axiosInstance from '../config/axios.instance';
-import { Playlist, Track } from '../models';
+import { Playlist, Track, User } from '../models';
 import { getAccessToken } from '../utils/credentials';
 
 export class DeezerPlaylists {
@@ -58,5 +58,27 @@ export class DeezerPlaylists {
         }
 
         return tracks;
+    }
+
+    public async getPlaylistFans(playlistId: number): Promise<User[]> {
+        const response = await axiosInstance.get(`playlist/${playlistId}/fans?access_token=${getAccessToken()}`);
+        const fans: User[] = response.data.data;
+        return fans;
+    }
+
+    public async addTrackToPlaylist(playlistId: number, trackId: number[]): Promise<string> {
+        const response = await axiosInstance.post(
+            `playlist/${playlistId}/tracks?access_token=${getAccessToken()}&songs=${trackId}`,
+        );
+        const status = response.data;
+        return status;
+    }
+
+    public async removeTrackFromPlaylist(playlistId: number, trackId: number): Promise<string> {
+        const response = await axiosInstance.delete(
+            `playlist/${playlistId}/tracks?access_token=${getAccessToken()}&songs=${trackId}`,
+        );
+        const status = response.data;
+        return status;
     }
 }
