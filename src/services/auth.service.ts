@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import axiosInstance from '../config/axios.instance';
-import { setAccessToken, getAccessToken } from '../utils/credentials';
+import { DeezerApiError, getAccessToken, setAccessToken } from '../utils';
 
 export class DeezerAuth {
     public async createAccessToken(appId: string, secretId: string, code: string) {
