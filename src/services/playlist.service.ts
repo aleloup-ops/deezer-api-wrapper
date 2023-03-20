@@ -18,10 +18,6 @@ export class DeezerPlaylists {
             } catch (error) {
                 throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
             }
-
-            if (!Array.isArray(playlists)) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ');
-            }
             return playlists;
         } catch (error) {
             throw new DeezerApiError("Failed to fetch user's playlists : " + (error as Error).message);
