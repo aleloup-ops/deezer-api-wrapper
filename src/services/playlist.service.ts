@@ -1,36 +1,48 @@
 import axiosInstance from '../config/axios.instance';
-import { Playlist, Track, User } from '../models';
+import { Artist, Playlist, Track, User } from '../models';
 import { DeezerApiError, getAccessToken } from '../utils';
 
 export class DeezerPlaylists {
-    public async getPlaylists(): Promise<Playlist[] | any> {
+    public async getPlaylists(): Promise<Playlist[]> {
         const accessToken = getAccessToken();
         try {
             const response = await axiosInstance.get(`user/me/playlists?access_token=${accessToken}`);
             const playlistsData: any[] = response.data.data;
-            const playlists: Playlist[] = [];
-            playlists.push(...playlistsData);
+            let playlists: Playlist[] = [];
 
-            if (!Array.isArray(playlistsData)) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ');
+            try {
+                playlists = playlistsData.map((data) => {
+                    const { creator, ...playlist } = data;
+                    return { creator: creator as Artist, ...playlist } as Playlist;
+                });
+            } catch (error) {
+                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
             }
 
+            if (!Array.isArray(playlists)) {
+                throw new DeezerApiError('Invalid data format returned from Deezer API : ');
+            }
             return playlists;
         } catch (error) {
-            throw new DeezerApiError(`Failed to fetch user's playlists : ${(error as Error).message}`);
+            throw new DeezerApiError("Failed to fetch user's playlists : " + (error as Error).message);
         }
     }
 
     public async getTracklist(playlistId: number): Promise<Track[]> {
-        const tracks: Track[] = [];
+        let tracks: Track[] = [];
 
         try {
             // Initial request
-            const url = `https://api.deezer.com/playlist/${playlistId}/tracks?access_token=${getAccessToken()}`;
+            const url = `playlist/${playlistId}/tracks?access_token=${getAccessToken()}`;
             let response = await axiosInstance.get(url);
 
+            const tracksData: any[] = response.data.data.data;
+
             // Add initial tracks to the array
-            tracks.push(...response.data.data);
+            tracks = tracksData.map((track: any) => {
+                const { artist, ...trackData } = track;
+                return { artist: artist as Artist, ...trackData } as Track;
+            });
 
             // Keep making requests until there is no more "next" key in the response
             while (response.data.next) {
@@ -49,7 +61,6 @@ export class DeezerPlaylists {
         } catch (error) {
             throw new DeezerApiError(`Error getting tracklist for playlist ${playlistId}: ${(error as Error).message}`);
         }
-
         return tracks;
     }
 
@@ -59,8 +70,9 @@ export class DeezerPlaylists {
             const fans: User[] = response.data.data;
             return fans;
         } catch (error) {
-            const message = `Failed to get fans for playlist with ID ${playlistId}. Error: ${(error as Error).message}`;
-            throw new DeezerApiError(message);
+            throw new DeezerApiError(
+                `Failed to fetch fans for playlist with ID ${playlistId}. Error: ${(error as Error).message}`,
+            );
         }
     }
 
@@ -69,19 +81,19 @@ export class DeezerPlaylists {
             const response = await axiosInstance.post(
                 `playlist/${playlistId}/tracks?access_token=${getAccessToken()}&songs=${trackId}`,
             );
-            const status = response.data;
+            const status = response.data.message;
             return status;
         } catch (error) {
             throw new DeezerApiError(`Error adding track to playlist ${playlistId}: ${(error as Error).message}`);
         }
     }
 
-    public async removeTrackFromPlaylist(playlistId: number, trackId: number): Promise<string> {
+    public async removeTrackFromPlaylist(playlistId: number, trackId: number[]): Promise<string> {
         try {
             const response = await axiosInstance.delete(
                 `playlist/${playlistId}/tracks?access_token=${getAccessToken()}&songs=${trackId}`,
             );
-            const status = response.data;
+            const status = response.data.message;
             return status;
         } catch (error) {
             throw new DeezerApiError(`Error removing track from playlist ${playlistId}: ${(error as Error).message}`);
