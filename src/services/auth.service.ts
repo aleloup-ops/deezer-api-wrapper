@@ -22,9 +22,9 @@ export class DeezerAuth {
             'delete_library',
             'manage_community',
         ];
-        const query: string = `app_id=${appId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope.join(
-            ',',
-        )}`;
+        const query: string = `app_id=${appId}&redirect_uri=${redirectUri}&response_type=${
+            responseType || 'token'
+        }&scope=${scope.join(',')}`;
 
         return encodeURI(`https://connect.deezer.com/oauth/auth.php?${query}`);
     };
