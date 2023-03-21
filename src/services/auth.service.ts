@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import axiosInstance from '../config/axios.instance';
 import { DeezerApiError, getAccessToken, setAccessToken } from '../utils';
 

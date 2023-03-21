@@ -1,7 +1,7 @@
 import { DeezerPlaylists } from '../services/playlist.service';
 import axiosInstance from '../config/axios.instance';
 import MockAdapter from 'axios-mock-adapter';
-import { DeezerApiError, getAccessToken, setAccessToken } from '../utils';
+import { DeezerApiError } from '../utils';
 
 const mockAxios = new MockAdapter(axiosInstance);
 const deezerPlaylist = new DeezerPlaylists();

@@ -4,9 +4,8 @@ import { DeezerApiError, getAccessToken } from '../utils';
 
 export class DeezerPlaylists {
     public async getPlaylists(): Promise<Playlist[]> {
-        const accessToken = getAccessToken();
         try {
-            const response = await axiosInstance.get(`user/me/playlists?access_token=${accessToken}`);
+            const response = await axiosInstance.get(`user/me/playlists?access_token=${getAccessToken()}`);
             const playlistsData: any[] = response.data.data;
             let playlists: Playlist[] = [];
 
