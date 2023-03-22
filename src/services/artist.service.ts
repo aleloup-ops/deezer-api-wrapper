@@ -76,18 +76,8 @@ export class DeezerArtists {
     public async getFans(artistId: number): Promise<User[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/fans?access_token=${getAccessToken()}`);
-            const fansData: any[] = response.data.data;
-            let fans: User[] = [];
-
-            try {
-                fans = fansData.map((data) => {
-                    const { ...fanData } = data;
-                    return { ...fanData } as User;
-                });
-            } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
-            }
-            return fans;
+            const fansData: User[] = response.data.data;
+            return fansData;
         } catch (error) {
             throw new DeezerApiError(`Error getting albums for artist ${artistId}: ${(error as Error).message}`);
         }
@@ -96,18 +86,8 @@ export class DeezerArtists {
     public async getRelatedArtists(artistId: number): Promise<Artist[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/related?access_token=${getAccessToken()}`);
-            const artistsData: any[] = response.data.data.data;
-            let artists: Artist[] = [];
-
-            try {
-                artists = artistsData.map((data) => {
-                    const { ...artistData } = data;
-                    return { ...artistData } as Artist;
-                });
-            } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
-            }
-            return artists;
+            const artistsData: Artist[] = response.data.data.data;
+            return artistsData;
         } catch (error) {
             throw new DeezerApiError(
                 `Error getting related artists for artist ${artistId}: ${(error as Error).message}`,
@@ -118,18 +98,8 @@ export class DeezerArtists {
     public async getRadio(artistId: number): Promise<Track[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/radio?access_token=${getAccessToken()}`);
-            const tracksData: any[] = response.data.data.data;
-            let tracks: Track[] = [];
-
-            try {
-                tracks = tracksData.map((data) => {
-                    const { ...trackData } = data;
-                    return { ...trackData } as Track;
-                });
-            } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
-            }
-            return tracks;
+            const tracksData: Track[] = response.data.data.data;
+            return tracksData;
         } catch (error) {
             throw new DeezerApiError(`Error getting radio for artist ${artistId}: ${(error as Error).message}`);
         }

@@ -6,18 +6,8 @@ export class DeezerPlaylists {
     public async getPlaylists(): Promise<Playlist[]> {
         try {
             const response = await axiosInstance.get(`user/me/playlists?access_token=${getAccessToken()}`);
-            const playlistsData: any[] = response.data.data;
-            let playlists: Playlist[] = [];
-
-            try {
-                playlists = playlistsData.map((data) => {
-                    const { creator, ...playlist } = data;
-                    return { creator: creator as Artist, ...playlist } as Playlist;
-                });
-            } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
-            }
-            return playlists;
+            const playlistsData: Playlist[] = response.data.data;
+            return playlistsData;
         } catch (error) {
             throw new DeezerApiError("Failed to fetch user's playlists : " + (error as Error).message);
         }
