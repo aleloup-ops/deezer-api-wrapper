@@ -2,6 +2,7 @@ import axiosInstance from '../config/axios.instance';
 import MockAdapter from 'axios-mock-adapter';
 import { DeezerApiError } from '../utils';
 import { DeezerArtists } from '../services/artist.service';
+import { Artist } from '../models';
 
 const mockAxios = new MockAdapter(axiosInstance);
 const deezerArtists = new DeezerArtists();
@@ -13,105 +14,206 @@ describe('DeezerArtists.getTopTracks', () => {
     });
 
     const testData = [
-        {
-            id: 140398635,
-            readable: true,
-            title: 'Ma meilleure amie',
-            title_short: 'Ma meilleure amie',
-            title_version: '',
-            link: 'https://www.deezer.com/track/140398635',
-            duration: 200,
-            rank: 838610,
-            explicit_lyrics: true,
-            explicit_content_lyrics: 1,
-            explicit_content_cover: 1,
-            preview: 'https://cdns-preview-9.dzcdn.net/stream/c-977cf480bc0dff154737ed5ddcc602d6-7.mp3',
-            md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
-            time_add: 1625602438,
-            artist: {
-                id: 5175734,
-                name: 'Vald',
-                link: 'https://www.deezer.com/artist/5175734',
-                picture: 'https://api.deezer.com/artist/5175734/image',
-                picture_small:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
-                picture_medium:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
-                picture_big:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
-                picture_xl:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
-                tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
-                type: 'artist',
-            },
-            album: {
-                id: 15116725,
-                title: 'Agartha',
-                cover: 'https://api.deezer.com/album/15116725/image',
-                cover_small:
-                    'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/56x56-000000-80-0-0.jpg',
-                cover_medium:
-                    'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/250x250-000000-80-0-0.jpg',
-                cover_big:
-                    'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/500x500-000000-80-0-0.jpg',
-                cover_xl:
-                    'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/1000x1000-000000-80-0-0.jpg',
-                md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
-                tracklist: 'https://api.deezer.com/album/15116725/tracks',
-                type: 'album',
-            },
-            type: 'track',
-        },
-        {
-            id: 752853442,
-            readable: true,
-            title: 'Journal perso II',
-            title_short: 'Journal perso II',
-            title_version: '',
-            link: 'https://www.deezer.com/track/752853442',
-            duration: 213,
-            rank: 570893,
-            explicit_lyrics: true,
-            explicit_content_lyrics: 1,
-            explicit_content_cover: 0,
-            preview: 'https://cdns-preview-5.dzcdn.net/stream/c-5f5282f761ce196b1c4ebfb978987883-5.mp3',
-            md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
-            time_add: 1625602439,
-            artist: {
-                id: 5175734,
-                name: 'Vald',
-                link: 'https://www.deezer.com/artist/5175734',
-                picture: 'https://api.deezer.com/artist/5175734/image',
-                picture_small:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
-                picture_medium:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
-                picture_big:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
-                picture_xl:
-                    'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
-                tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
-                type: 'artist',
-            },
-            album: {
-                id: 110813842,
-                title: 'Journal perso II',
-                cover: 'https://api.deezer.com/album/110813842/image',
-                cover_small:
-                    'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/56x56-000000-80-0-0.jpg',
-                cover_medium:
-                    'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/250x250-000000-80-0-0.jpg',
-                cover_big:
-                    'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/500x500-000000-80-0-0.jpg',
-                cover_xl:
-                    'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/1000x1000-000000-80-0-0.jpg',
-                md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
-                tracklist: 'https://api.deezer.com/album/110813842/tracks',
-                type: 'album',
-            },
-            type: 'track',
-        },
-    ];
+      {
+          id: 140398635,
+          readable: true,
+          title: 'Ma meilleure amie',
+          title_short: 'Ma meilleure amie',
+          title_version: '',
+          link: 'https://www.deezer.com/track/140398635',
+          duration: 200,
+          rank: 838610,
+          explicit_lyrics: true,
+          explicit_content_lyrics: 1,
+          explicit_content_cover: 1,
+          preview: 'https://cdns-preview-9.dzcdn.net/stream/c-977cf480bc0dff154737ed5ddcc602d6-7.mp3',
+          md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
+          time_add: 1625602438,
+          artist: {
+              id: 5175734,
+              name: 'Vald',
+              link: 'https://www.deezer.com/artist/5175734',
+              picture: 'https://api.deezer.com/artist/5175734/image',
+              picture_small:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+              picture_medium:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+              picture_big:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+              picture_xl:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+              tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+              type: 'artist',
+          },
+          album: {
+              id: 15116725,
+              title: 'Agartha',
+              cover: 'https://api.deezer.com/album/15116725/image',
+              cover_small:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/56x56-000000-80-0-0.jpg',
+              cover_medium:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/250x250-000000-80-0-0.jpg',
+              cover_big:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/500x500-000000-80-0-0.jpg',
+              cover_xl:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/1000x1000-000000-80-0-0.jpg',
+              md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
+              tracklist: 'https://api.deezer.com/album/15116725/tracks',
+              type: 'album',
+          },
+          type: 'track',
+      },
+      {
+          id: 752853442,
+          readable: true,
+          title: 'Journal perso II',
+          title_short: 'Journal perso II',
+          title_version: '',
+          link: 'https://www.deezer.com/track/752853442',
+          duration: 213,
+          rank: 570893,
+          explicit_lyrics: true,
+          explicit_content_lyrics: 1,
+          explicit_content_cover: 0,
+          preview: 'https://cdns-preview-5.dzcdn.net/stream/c-5f5282f761ce196b1c4ebfb978987883-5.mp3',
+          md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
+          time_add: 1625602439,
+          artist: {
+              id: 5175734,
+              name: 'Vald',
+              link: 'https://www.deezer.com/artist/5175734',
+              picture: 'https://api.deezer.com/artist/5175734/image',
+              picture_small:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+              picture_medium:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+              picture_big:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+              picture_xl:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+              tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+              type: 'artist',
+          },
+          album: {
+              id: 110813842,
+              title: 'Journal perso II',
+              cover: 'https://api.deezer.com/album/110813842/image',
+              cover_small:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/56x56-000000-80-0-0.jpg',
+              cover_medium:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/250x250-000000-80-0-0.jpg',
+              cover_big:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/500x500-000000-80-0-0.jpg',
+              cover_xl:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/1000x1000-000000-80-0-0.jpg',
+              md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
+              tracklist: 'https://api.deezer.com/album/110813842/tracks',
+              type: 'album',
+          },
+          type: 'track',
+      },
+  ];
+
+  const testResult = [
+    {
+      id: 140398635,
+      readable: true,
+      title: 'Ma meilleure amie',
+      titleShort: 'Ma meilleure amie',
+      titleVersion: '',
+      link: 'https://www.deezer.com/track/140398635',
+      duration: 200,
+      rank: 838610,
+      explicitLyrics: true,
+      explicitContentLyrics: 1,
+      explicitContentCover: 1,
+      preview: 'https://cdns-preview-9.dzcdn.net/stream/c-977cf480bc0dff154737ed5ddcc602d6-7.mp3',
+      md5Image: '3a7a77f8e3dc44f85a0371d195eac355',
+      timeAdd: 1625602438,
+      artist: {
+          id: 5175734,
+          name: 'Vald',
+          link: 'https://www.deezer.com/artist/5175734',
+          picture: 'https://api.deezer.com/artist/5175734/image',
+          picture_small:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+          picture_medium:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+          picture_big:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+          picture_xl:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+          tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+          type: 'artist',
+      },
+      album: {
+          id: 15116725,
+          title: 'Agartha',
+          cover: 'https://api.deezer.com/album/15116725/image',
+          cover_small:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/56x56-000000-80-0-0.jpg',
+          cover_medium:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/250x250-000000-80-0-0.jpg',
+          cover_big:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/500x500-000000-80-0-0.jpg',
+          cover_xl:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/1000x1000-000000-80-0-0.jpg',
+          md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
+          tracklist: 'https://api.deezer.com/album/15116725/tracks',
+          type: 'album',
+      },
+      type: 'track',
+    },
+    {
+      id: 752853442,
+      readable: true,
+      title: 'Journal perso II',
+      titleShort: 'Journal perso II',
+      titleVersion: '',
+      link: 'https://www.deezer.com/track/752853442',
+      duration: 213,
+      rank: 570893,
+      explicitLyrics: true,
+      explicitContentLyrics: 1,
+      explicitContentCover: 0,
+      preview: 'https://cdns-preview-5.dzcdn.net/stream/c-5f5282f761ce196b1c4ebfb978987883-5.mp3',
+      md5Image: '97c9cce088f5c27eef2acfc84ffab39f',
+      timeAdd: 1625602439,
+      artist: {
+          id: 5175734,
+          name: 'Vald',
+          link: 'https://www.deezer.com/artist/5175734',
+          picture: 'https://api.deezer.com/artist/5175734/image',
+          picture_small:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+          picture_medium:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+          picture_big:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+          picture_xl:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+          tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+          type: 'artist',
+      },
+      album: {
+          id: 110813842,
+          title: 'Journal perso II',
+          cover: 'https://api.deezer.com/album/110813842/image',
+          cover_small:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/56x56-000000-80-0-0.jpg',
+          cover_medium:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/250x250-000000-80-0-0.jpg',
+          cover_big:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/500x500-000000-80-0-0.jpg',
+          cover_xl:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/1000x1000-000000-80-0-0.jpg',
+          md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
+          tracklist: 'https://api.deezer.com/album/110813842/tracks',
+          type: 'album',
+      },
+      type: 'track',
+  },
+  ];
     const mockResponse = {
         data: {
             data: testData,
@@ -127,7 +229,7 @@ describe('DeezerArtists.getTopTracks', () => {
         const result = await deezerArtists.getTopTracks(artistId);
 
         // Assert
-        expect(result).toEqual(testData);
+        expect(result).toEqual(testResult);
     });
 
     // it('should throw an error if the artist does not exist', async () => {
@@ -172,6 +274,38 @@ describe('DeezerArtists.getAlbums', () => {
             type: 'album',
         },
     ];
+
+    const testResult = [
+      {
+        id: 294609352,
+        title: 'Homework (25th Anniversary Edition)',
+        upc: undefined,
+        link: 'https://www.deezer.com/album/294609352',
+        share: undefined,
+        cover: 'https://api.deezer.com/album/294609352/image',
+        coverMail: undefined,
+        coverMedium: 'https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/250x250-000000-80-0-0.jpg',
+        coverBig: 'https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/500x500-000000-80-0-0.jpg',
+        coverXl: 'https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/1000x1000-000000-80-0-0.jpg',
+        genreId: 113,
+        genres: undefined,
+        label: undefined,
+        nbTracks: undefined,
+        duration: undefined,
+        fans: 9099,
+        releaseDate: '1997-01-20',
+        recordType: 'album',
+        available: undefined,
+        alternative: undefined,
+        tracklist: 'https://api.deezer.com/album/294609352/tracks',
+        explicitLyrics: false,
+        explicitContentLyrics: undefined,
+        explicitContentCover: undefined,
+        contributors: undefined,
+        artist: undefined,
+        type: 'album'
+      }
+    ];
     const mockResponse = {
         data: {
             data: testData,
@@ -187,11 +321,8 @@ describe('DeezerArtists.getAlbums', () => {
         const result = await deezerArtists.getAlbums(artistId);
 
         // Assert
-        expect(result).toEqual(testData);
+        expect(result).toEqual(testResult);
     });
-
-    // it('should throw an error if the artist does not exist', async () => {
-    // });
 
     it('should throw an error if the request fails', async () => {
         const errorMessage = 'Request failed with status code 500';
@@ -234,6 +365,33 @@ describe('DeezerArtists.getFans', () => {
             type: 'user',
         },
     ];
+
+    const testResult = [
+      {
+          id: 123,
+          name: 'User1',
+          lastname: '',
+          firstname: '',
+          email: 'user@gmail.com',
+          status: 2,
+          birthday: '0000-00-00',
+          inscriptionDate: '2015-01-25',
+          gender: '',
+          link: 'ddd',
+          picture: 'ddd',
+          pictureSmall: 'ee',
+          pictureMedium: 'dd',
+          pictureBig: 'dd',
+          pictureXl: 'dd',
+          country: 'FR',
+          lang: 'en',
+          isKid: false,
+          explicitContentLevel: 'explicit_display',
+          explicitContentLevelsAvailable: ['explicit_display', 'explicit_no_recommendation', 'explicit_hide'],
+          tracklist: 'dd',
+          type: 'user',
+      },
+  ];
     const mockResponse = {
         data: testData,
     };
@@ -245,7 +403,7 @@ describe('DeezerArtists.getFans', () => {
         const result = await deezerArtists.getFans(artistId);
 
         // Assert
-        expect(result).toEqual(testData);
+        expect(result).toEqual(testResult);
     });
 
     it('should throw an error if the request fails', async () => {
@@ -268,6 +426,7 @@ describe('DeezerArtists.getRelatedArtists', () => {
             id: 13358,
             name: 'Kavinsky',
             link: 'https://www.deezer.com/artist/13358',
+            share: "undefined",
             picture: 'https://api.deezer.com/artist/13358/image',
             picture_small:
                 'https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/56x56-000000-80-0-0.jpg',
@@ -284,6 +443,22 @@ describe('DeezerArtists.getRelatedArtists', () => {
             type: 'artist',
         },
     ];
+    
+    const testResult: Artist[] = [{
+      id: 13358,
+      name: 'Kavinsky',
+      link: 'https://www.deezer.com/artist/13358',
+      share: "undefined",
+      picture: 'https://api.deezer.com/artist/13358/image',
+      pictureSmall: 'https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/56x56-000000-80-0-0.jpg',
+      pictureMedium: 'https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/250x250-000000-80-0-0.jpg',
+      pictureBig: 'https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/500x500-000000-80-0-0.jpg',
+      pictureXl: 'https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/1000x1000-000000-80-0-0.jpg',
+      nbAlbum: 10,
+      nbFan: 405166,
+      radio: true,
+      tracklist: 'https://api.deezer.com/artist/13358/top?limit=50'
+    }];
 
     const mockResponse = {
         data: {
@@ -299,7 +474,7 @@ describe('DeezerArtists.getRelatedArtists', () => {
         const result = await deezerArtists.getRelatedArtists(artistId);
 
         // Assert
-        expect(result).toEqual(testData);
+        expect(result).toEqual(testResult);
     });
 
     it('should throw an error if the request fails', async () => {
@@ -318,53 +493,206 @@ describe('DeezerArtists.getRadio', () => {
     });
 
     const testData = [
-        {
-            id: 694457472,
-            readable: true,
-            title: 'Elévation',
-            title_short: 'Elévation',
-            title_version: '',
-            duration: 155,
-            rank: 691531,
-            explicit_lyrics: false,
-            explicit_content_lyrics: 0,
-            explicit_content_cover: 0,
-            preview: 'https://cdns-preview-7.dzcdn.net/stream/c-7dbc3e1dfdb07828920aa7923cedfebd-6.mp3',
-            md5_image: '9bf95ee2b2e8cc8b9aafb261062ca5e3',
-            artist: {
-                id: 13682095,
-                name: 'Vladimir Cauchemar',
-                picture: 'https://api.deezer.com/artist/13682095/image',
-                picture_small:
-                    'https://e-cdns-images.dzcdn.net/images/artist/5f1198512184f52169888a2678b78c4e/56x56-000000-80-0-0.jpg',
-                picture_medium:
-                    'https://e-cdns-images.dzcdn.net/images/artist/5f1198512184f52169888a2678b78c4e/250x250-000000-80-0-0.jpg',
-                picture_big:
-                    'https://e-cdns-images.dzcdn.net/images/artist/5f1198512184f52169888a2678b78c4e/500x500-000000-80-0-0.jpg',
-                picture_xl:
-                    'https://e-cdns-images.dzcdn.net/images/artist/5f1198512184f52169888a2678b78c4e/1000x1000-000000-80-0-0.jpg',
-                tracklist: 'https://api.deezer.com/artist/13682095/top?limit=50',
-                type: 'artist',
-            },
-            album: {
-                id: 99907442,
-                title: 'Elévation',
-                cover: 'https://api.deezer.com/album/99907442/image',
-                cover_small:
-                    'https://e-cdns-images.dzcdn.net/images/cover/9bf95ee2b2e8cc8b9aafb261062ca5e3/56x56-000000-80-0-0.jpg',
-                cover_medium:
-                    'https://e-cdns-images.dzcdn.net/images/cover/9bf95ee2b2e8cc8b9aafb261062ca5e3/250x250-000000-80-0-0.jpg',
-                cover_big:
-                    'https://e-cdns-images.dzcdn.net/images/cover/9bf95ee2b2e8cc8b9aafb261062ca5e3/500x500-000000-80-0-0.jpg',
-                cover_xl:
-                    'https://e-cdns-images.dzcdn.net/images/cover/9bf95ee2b2e8cc8b9aafb261062ca5e3/1000x1000-000000-80-0-0.jpg',
-                md5_image: '9bf95ee2b2e8cc8b9aafb261062ca5e3',
-                tracklist: 'https://api.deezer.com/album/99907442/tracks',
-                type: 'album',
-            },
-            type: 'track',
-        },
-    ];
+      {
+          id: 140398635,
+          readable: true,
+          title: 'Ma meilleure amie',
+          title_short: 'Ma meilleure amie',
+          title_version: '',
+          link: 'https://www.deezer.com/track/140398635',
+          duration: 200,
+          rank: 838610,
+          explicit_lyrics: true,
+          explicit_content_lyrics: 1,
+          explicit_content_cover: 1,
+          preview: 'https://cdns-preview-9.dzcdn.net/stream/c-977cf480bc0dff154737ed5ddcc602d6-7.mp3',
+          md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
+          time_add: 1625602438,
+          artist: {
+              id: 5175734,
+              name: 'Vald',
+              link: 'https://www.deezer.com/artist/5175734',
+              picture: 'https://api.deezer.com/artist/5175734/image',
+              picture_small:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+              picture_medium:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+              picture_big:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+              picture_xl:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+              tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+              type: 'artist',
+          },
+          album: {
+              id: 15116725,
+              title: 'Agartha',
+              cover: 'https://api.deezer.com/album/15116725/image',
+              cover_small:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/56x56-000000-80-0-0.jpg',
+              cover_medium:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/250x250-000000-80-0-0.jpg',
+              cover_big:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/500x500-000000-80-0-0.jpg',
+              cover_xl:
+                  'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/1000x1000-000000-80-0-0.jpg',
+              md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
+              tracklist: 'https://api.deezer.com/album/15116725/tracks',
+              type: 'album',
+          },
+          type: 'track',
+      },
+      {
+          id: 752853442,
+          readable: true,
+          title: 'Journal perso II',
+          title_short: 'Journal perso II',
+          title_version: '',
+          link: 'https://www.deezer.com/track/752853442',
+          duration: 213,
+          rank: 570893,
+          explicit_lyrics: true,
+          explicit_content_lyrics: 1,
+          explicit_content_cover: 0,
+          preview: 'https://cdns-preview-5.dzcdn.net/stream/c-5f5282f761ce196b1c4ebfb978987883-5.mp3',
+          md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
+          time_add: 1625602439,
+          artist: {
+              id: 5175734,
+              name: 'Vald',
+              link: 'https://www.deezer.com/artist/5175734',
+              picture: 'https://api.deezer.com/artist/5175734/image',
+              picture_small:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+              picture_medium:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+              picture_big:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+              picture_xl:
+                  'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+              tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+              type: 'artist',
+          },
+          album: {
+              id: 110813842,
+              title: 'Journal perso II',
+              cover: 'https://api.deezer.com/album/110813842/image',
+              cover_small:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/56x56-000000-80-0-0.jpg',
+              cover_medium:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/250x250-000000-80-0-0.jpg',
+              cover_big:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/500x500-000000-80-0-0.jpg',
+              cover_xl:
+                  'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/1000x1000-000000-80-0-0.jpg',
+              md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
+              tracklist: 'https://api.deezer.com/album/110813842/tracks',
+              type: 'album',
+          },
+          type: 'track',
+      },
+  ];
+
+  const testResult = [
+    {
+      id: 140398635,
+      readable: true,
+      title: 'Ma meilleure amie',
+      titleShort: 'Ma meilleure amie',
+      titleVersion: '',
+      link: 'https://www.deezer.com/track/140398635',
+      duration: 200,
+      rank: 838610,
+      explicitLyrics: true,
+      explicitContentLyrics: 1,
+      explicitContentCover: 1,
+      preview: 'https://cdns-preview-9.dzcdn.net/stream/c-977cf480bc0dff154737ed5ddcc602d6-7.mp3',
+      md5Image: '3a7a77f8e3dc44f85a0371d195eac355',
+      timeAdd: 1625602438,
+      artist: {
+          id: 5175734,
+          name: 'Vald',
+          link: 'https://www.deezer.com/artist/5175734',
+          picture: 'https://api.deezer.com/artist/5175734/image',
+          picture_small:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+          picture_medium:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+          picture_big:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+          picture_xl:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+          tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+          type: 'artist',
+      },
+      album: {
+          id: 15116725,
+          title: 'Agartha',
+          cover: 'https://api.deezer.com/album/15116725/image',
+          cover_small:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/56x56-000000-80-0-0.jpg',
+          cover_medium:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/250x250-000000-80-0-0.jpg',
+          cover_big:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/500x500-000000-80-0-0.jpg',
+          cover_xl:
+              'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/1000x1000-000000-80-0-0.jpg',
+          md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
+          tracklist: 'https://api.deezer.com/album/15116725/tracks',
+          type: 'album',
+      },
+      type: 'track',
+    },
+    {
+      id: 752853442,
+      readable: true,
+      title: 'Journal perso II',
+      titleShort: 'Journal perso II',
+      titleVersion: '',
+      link: 'https://www.deezer.com/track/752853442',
+      duration: 213,
+      rank: 570893,
+      explicitLyrics: true,
+      explicitContentLyrics: 1,
+      explicitContentCover: 0,
+      preview: 'https://cdns-preview-5.dzcdn.net/stream/c-5f5282f761ce196b1c4ebfb978987883-5.mp3',
+      md5Image: '97c9cce088f5c27eef2acfc84ffab39f',
+      timeAdd: 1625602439,
+      artist: {
+          id: 5175734,
+          name: 'Vald',
+          link: 'https://www.deezer.com/artist/5175734',
+          picture: 'https://api.deezer.com/artist/5175734/image',
+          picture_small:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+          picture_medium:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+          picture_big:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+          picture_xl:
+              'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+          tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+          type: 'artist',
+      },
+      album: {
+          id: 110813842,
+          title: 'Journal perso II',
+          cover: 'https://api.deezer.com/album/110813842/image',
+          cover_small:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/56x56-000000-80-0-0.jpg',
+          cover_medium:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/250x250-000000-80-0-0.jpg',
+          cover_big:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/500x500-000000-80-0-0.jpg',
+          cover_xl:
+              'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/1000x1000-000000-80-0-0.jpg',
+          md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
+          tracklist: 'https://api.deezer.com/album/110813842/tracks',
+          type: 'album',
+      },
+      type: 'track',
+  },
+  ];
 
     const mockResponse = {
         data: {
@@ -379,7 +707,7 @@ describe('DeezerArtists.getRadio', () => {
         const result = await deezerArtists.getRadio(artistId);
 
         // Assert
-        expect(result).toEqual(testData);
+        expect(result).toEqual(testResult);
     });
 
     it('should throw an error if the request fails', async () => {
@@ -442,11 +770,10 @@ describe('DeezerArtists.getPlaylists', () => {
         const result = await deezerArtists.getPlaylists(artistId);
 
         // Assert
-        expect(result).toEqual(testData);
+        expect(result).toHaveLength(1);
+        expect(result[0]).toHaveProperty('id', 1386208615);
+        expect(result[0]).toHaveProperty('title', 'Pop Party');
     });
-
-    // it('should throw an error if the artist does not exist', async () => {
-    // });
 
     it('should throw an error if the request fails', async () => {
         const errorMessage = 'Request failed with status code 500';

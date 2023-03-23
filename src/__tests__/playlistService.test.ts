@@ -205,6 +205,107 @@ describe('DeezerPlaylists.getTracklist', () => {
         },
     ];
 
+    const testResult = [
+      {
+        id: 140398635,
+        readable: true,
+        title: 'Ma meilleure amie',
+        titleShort: 'Ma meilleure amie',
+        titleVersion: '',
+        link: 'https://www.deezer.com/track/140398635',
+        duration: 200,
+        rank: 838610,
+        explicitLyrics: true,
+        explicitContentLyrics: 1,
+        explicitContentCover: 1,
+        preview: 'https://cdns-preview-9.dzcdn.net/stream/c-977cf480bc0dff154737ed5ddcc602d6-7.mp3',
+        md5Image: '3a7a77f8e3dc44f85a0371d195eac355',
+        timeAdd: 1625602438,
+        artist: {
+            id: 5175734,
+            name: 'Vald',
+            link: 'https://www.deezer.com/artist/5175734',
+            picture: 'https://api.deezer.com/artist/5175734/image',
+            picture_small:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+            picture_medium:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+            picture_big:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+            picture_xl:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+            tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+            type: 'artist',
+        },
+        album: {
+            id: 15116725,
+            title: 'Agartha',
+            cover: 'https://api.deezer.com/album/15116725/image',
+            cover_small:
+                'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/56x56-000000-80-0-0.jpg',
+            cover_medium:
+                'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/250x250-000000-80-0-0.jpg',
+            cover_big:
+                'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/500x500-000000-80-0-0.jpg',
+            cover_xl:
+                'https://e-cdns-images.dzcdn.net/images/cover/3a7a77f8e3dc44f85a0371d195eac355/1000x1000-000000-80-0-0.jpg',
+            md5_image: '3a7a77f8e3dc44f85a0371d195eac355',
+            tracklist: 'https://api.deezer.com/album/15116725/tracks',
+            type: 'album',
+        },
+        type: 'track',
+      },
+      {
+        id: 752853442,
+        readable: true,
+        title: 'Journal perso II',
+        titleShort: 'Journal perso II',
+        titleVersion: '',
+        link: 'https://www.deezer.com/track/752853442',
+        duration: 213,
+        rank: 570893,
+        explicitLyrics: true,
+        explicitContentLyrics: 1,
+        explicitContentCover: 0,
+        preview: 'https://cdns-preview-5.dzcdn.net/stream/c-5f5282f761ce196b1c4ebfb978987883-5.mp3',
+        md5Image: '97c9cce088f5c27eef2acfc84ffab39f',
+        timeAdd: 1625602439,
+        artist: {
+            id: 5175734,
+            name: 'Vald',
+            link: 'https://www.deezer.com/artist/5175734',
+            picture: 'https://api.deezer.com/artist/5175734/image',
+            picture_small:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/56x56-000000-80-0-0.jpg',
+            picture_medium:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/250x250-000000-80-0-0.jpg',
+            picture_big:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/500x500-000000-80-0-0.jpg',
+            picture_xl:
+                'https://e-cdns-images.dzcdn.net/images/artist/c846082faf7dadf93c8c7b48190c97b6/1000x1000-000000-80-0-0.jpg',
+            tracklist: 'https://api.deezer.com/artist/5175734/top?limit=50',
+            type: 'artist',
+        },
+        album: {
+            id: 110813842,
+            title: 'Journal perso II',
+            cover: 'https://api.deezer.com/album/110813842/image',
+            cover_small:
+                'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/56x56-000000-80-0-0.jpg',
+            cover_medium:
+                'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/250x250-000000-80-0-0.jpg',
+            cover_big:
+                'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/500x500-000000-80-0-0.jpg',
+            cover_xl:
+                'https://e-cdns-images.dzcdn.net/images/cover/97c9cce088f5c27eef2acfc84ffab39f/1000x1000-000000-80-0-0.jpg',
+            md5_image: '97c9cce088f5c27eef2acfc84ffab39f',
+            tracklist: 'https://api.deezer.com/album/110813842/tracks',
+            type: 'album',
+        },
+        type: 'track',
+    },
+    ];
+
     it('should return a list of tracks from the Deezer API', async () => {
         // Arrange
         const mockPlaylistId = 12345;
@@ -225,7 +326,7 @@ describe('DeezerPlaylists.getTracklist', () => {
         const result = await deezerPlaylist.getTracklist(mockPlaylistId);
 
         // Assert
-        expect(result).toEqual(testData);
+        expect(result).toEqual(testResult);
     });
 });
 
@@ -237,7 +338,32 @@ describe('DeezerPlaylists.getPlaylistFans', () => {
     });
 
     it('should return the fans of the specified playlist', async () => {
-        const testFans = [
+      const testData = [
+        {
+            id: 1,
+            name: 'JohnDoe123',
+            lastname: 'Doe',
+            firstname: 'John',
+            email: 'john.doe@gmail.com',
+            status: 1,
+            birthday: '01-01-2000',
+            inscription_date: '01-01-2000',
+            gender: 'male',
+            link: 'https://www.deezer.com/profile/1',
+            picture: 'https://api.deezer.com/user/1/image',
+            picture_small: 'https://api.deezer.com/user/1/image',
+            picture_medium: 'https://api.deezer.com/user/1/image',
+            picture_big: 'https://api.deezer.com/user/1/image',
+            picture_xl: 'https://api.deezer.com/user/1/image',
+            country: 'US',
+            lang: 'en',
+            is_kid: false,
+            explicit_content_level: 1,
+            explicit_content_levels_available: [1, 2],
+            tracklist: 'https://api.deezer.com/user/1/flow',
+        },
+    ];
+        const testResult = [
             {
                 id: 1,
                 name: 'JohnDoe123',
@@ -263,11 +389,11 @@ describe('DeezerPlaylists.getPlaylistFans', () => {
             },
         ];
 
-        mockAxios.onGet(`playlist/${playlistId}/fans?access_token=`).reply(200, { data: testFans });
+        mockAxios.onGet(`playlist/${playlistId}/fans?access_token=`).reply(200, { data: testData });
 
         const fans = await deezerPlaylist.getPlaylistFans(playlistId);
 
-        expect(fans).toEqual(testFans);
+        expect(fans).toEqual(testResult);
     });
 
     it('should throw a DeezerApiError if an error occurs while fetching fans', async () => {

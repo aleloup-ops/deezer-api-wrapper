@@ -1,13 +1,27 @@
 import axiosInstance from '../config/axios.instance';
 import { Artist, Playlist, Track, User } from '../models';
-import { DeezerApiError, getAccessToken } from '../utils';
+import { DeezerApiError, generatePlaylist, generateTrack, generateUser, getAccessToken } from '../utils';
 
 export class DeezerPlaylists {
     public async getPlaylists(): Promise<Playlist[]> {
+        const accessToken = getAccessToken();
         try {
-            const response = await axiosInstance.get(`user/me/playlists?access_token=${getAccessToken()}`);
-            const playlistsData: Playlist[] = response.data.data;
-            return playlistsData;
+            const response = await axiosInstance.get(`user/me/playlists?access_token=${accessToken}`);
+            const playlistsData: any[] = response.data.data;
+            let playlists: Playlist[] = [];
+
+            try {
+                playlistsData.map((data) => {
+                    playlists.push(generatePlaylist(data));
+                });
+            } catch (error) {
+                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
+            }
+
+            if (!Array.isArray(playlists)) {
+                throw new DeezerApiError('Invalid data format returned from Deezer API : ');
+            }
+            return playlists;
         } catch (error) {
             throw new DeezerApiError("Failed to fetch user's playlists : " + (error as Error).message);
         }
@@ -24,9 +38,8 @@ export class DeezerPlaylists {
             const tracksData: any[] = response.data.data.data;
 
             // Add initial tracks to the array
-            tracks = tracksData.map((track: any) => {
-                const { artist, ...trackData } = track;
-                return { artist: artist as Artist, ...trackData } as Track;
+            tracksData.map((track: any) => {
+                tracks.push(generateTrack(track));
             });
 
             // Keep making requests until there is no more "next" key in the response
@@ -36,7 +49,7 @@ export class DeezerPlaylists {
                     response = await axiosInstance.get(response.data.next);
 
                     // Add the new tracks to the array
-                    tracks.push(...response.data.data);
+                    tracks.push(generateTrack(response.data.data));
                 } catch (error) {
                     throw new DeezerApiError(
                         `Error getting next page of tracks for playlist ${playlistId}: ${(error as Error).message}`,
@@ -52,7 +65,11 @@ export class DeezerPlaylists {
     public async getPlaylistFans(playlistId: number): Promise<User[]> {
         try {
             const response = await axiosInstance.get(`playlist/${playlistId}/fans?access_token=${getAccessToken()}`);
-            const fans: User[] = response.data.data;
+            const fansData: any[] = response.data.data;
+            const fans: User[] = [];
+            fansData.map((data) => {
+                fans.push(generateUser(data));
+            });
             return fans;
         } catch (error) {
             throw new DeezerApiError(

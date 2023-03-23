@@ -1,6 +1,6 @@
 import axiosInstance from '../config/axios.instance';
 import { Album, Artist, Playlist, Track, User } from '../models';
-import { getAccessToken, setAccessToken, DeezerApiError } from '../utils';
+import { getAccessToken, setAccessToken, DeezerApiError, generatePlaylist, generateTrack, generateArtist, generateUser, generateAlbum } from '../utils';
 
 export class DeezerArtists {
     public getTopTracks = async (artistId: number): Promise<Track[]> => {
@@ -13,9 +13,8 @@ export class DeezerArtists {
             const tracksData: any[] = response.data.data.data;
 
             // Add initial tracks to the array
-            tracks = tracksData.map((track: any) => {
-                const { artist, ...trackData } = track;
-                return { artist: artist as Artist, ...trackData } as Track;
+            tracksData.map((track: any) => {
+              tracks.push(generateTrack(track));
             });
 
             // Keep making requests until there is no more "next" key in the response
@@ -25,7 +24,9 @@ export class DeezerArtists {
                     response = await axiosInstance.get(response.data.next);
 
                     // Add the new tracks to the array
-                    tracks.push(...response.data.data);
+                    response.data.data.map((track: any) => {
+                      tracks.push(generateTrack(track));
+                    });
                 } catch (error) {
                     throw new DeezerApiError(
                         `Error getting next page of tracks for artist ${artistId}: ${(error as Error).message}`,
@@ -48,9 +49,8 @@ export class DeezerArtists {
             const albumsData: any[] = response.data.data.data;
 
             // Add initial albums to the array
-            albums = albumsData.map((album: any) => {
-                const { artist, ...albumData } = album;
-                return { artist: artist as Artist, ...albumData } as Album;
+            albumsData.map((album: any) => {
+              albums.push(generateAlbum(album));
             });
 
             // Keep making requests until there is no more "next" key in the response
@@ -60,7 +60,9 @@ export class DeezerArtists {
                     response = await axiosInstance.get(response.data.next);
 
                     // Add the new albums to the array
-                    albums.push(...response.data.data);
+                    response.data.data.map((album: any) => {
+                      albums.push(generateAlbum(album));
+                    });
                 } catch (error) {
                     throw new DeezerApiError(
                         `Error getting next page of albums for artist ${artistId}: ${(error as Error).message}`,
@@ -76,8 +78,17 @@ export class DeezerArtists {
     public async getFans(artistId: number): Promise<User[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/fans?access_token=${getAccessToken()}`);
-            const fansData: User[] = response.data.data;
-            return fansData;
+            const fansData: any[] = response.data.data;
+            let fans: User[] = [];
+
+            try {
+                fansData.map((data) => {
+                    fans.push(generateUser(data));
+                });
+            } catch (error) {
+                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
+            }
+            return fans;
         } catch (error) {
             throw new DeezerApiError(`Error getting albums for artist ${artistId}: ${(error as Error).message}`);
         }
@@ -86,8 +97,17 @@ export class DeezerArtists {
     public async getRelatedArtists(artistId: number): Promise<Artist[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/related?access_token=${getAccessToken()}`);
-            const artistsData: Artist[] = response.data.data.data;
-            return artistsData;
+            const artistsData: any[] = response.data.data.data;
+            let artists: Artist[] = [];
+
+            try {
+                artistsData.map((data) => {
+                    artists.push(generateArtist(data));
+                });
+            } catch (error) {
+                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
+            }
+            return artists;
         } catch (error) {
             throw new DeezerApiError(
                 `Error getting related artists for artist ${artistId}: ${(error as Error).message}`,
@@ -98,8 +118,17 @@ export class DeezerArtists {
     public async getRadio(artistId: number): Promise<Track[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/radio?access_token=${getAccessToken()}`);
-            const tracksData: Track[] = response.data.data.data;
-            return tracksData;
+            const tracksData: any[] = response.data.data.data;
+            let tracks: Track[] = [];
+
+            try {
+                tracksData.map((data) => {
+                  tracks.push(generateTrack(data));
+                });
+            } catch (error) {
+                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
+            }
+            return tracks;
         } catch (error) {
             throw new DeezerApiError(`Error getting radio for artist ${artistId}: ${(error as Error).message}`);
         }
@@ -115,9 +144,8 @@ export class DeezerArtists {
             const playlistsData: any[] = response.data.data.data;
 
             // Add initial playlists to the array
-            playlists = playlistsData.map((playlist: any) => {
-                const { creator, ...playlistData } = playlist;
-                return { creator: creator as Artist, ...playlistData } as Playlist;
+            playlistsData.map((playlist: any) => {
+                playlists.push(generatePlaylist(playlist));
             });
 
             // Keep making requests until there is no more "next" key in the response
@@ -127,7 +155,7 @@ export class DeezerArtists {
                     response = await axiosInstance.get(response.data.next);
 
                     // Add the new playlists to the array
-                    playlists.push(...response.data.data);
+                    playlists.push(generatePlaylist(response.data.data));
                 } catch (error) {
                     throw new DeezerApiError(
                         `Error getting next page of playlists for artist ${artistId}: ${(error as Error).message}`,

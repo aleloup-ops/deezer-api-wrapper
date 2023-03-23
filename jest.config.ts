@@ -22,7 +22,6 @@ export default {
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
     'src/**/{!(src/models/album.model.ts),}.{ts,jxs}',
-    '!**/models/**',
   ],
 
   // The directory where Jest should output its coverage files
