@@ -1,0 +1,72 @@
+{
+  "albumTestData": [{
+    "id": 294609352,
+    "title": "Homework (25th Anniversary Edition)",
+    "link": "https://www.deezer.com/album/294609352",
+    "cover": "https://api.deezer.com/album/294609352/image",
+    "cover_small":
+        "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/56x56-000000-80-0-0.jpg",
+    "cover_medium":
+        "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/250x250-000000-80-0-0.jpg",
+    "cover_big":
+        "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/500x500-000000-80-0-0.jpg",
+    "cover_xl":
+        "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/1000x1000-000000-80-0-0.jpg",
+    "md5_image": "117dcf85bdf0851347403796521d1e9d",
+    "genre_id": 113,
+    "fans": 9099,
+    "release_date": "1997-01-20",
+    "record_type": "album",
+    "tracklist": "https://api.deezer.com/album/294609352/tracks",
+    "explicit_lyrics": false,
+    "type": "album",
+    "alternative": "undefined",
+    "artist": "undefined",
+    "available": "undefined",
+    "contributors": "undefined",
+    "duration": "undefined",
+    "explicit_content_cover": "undefined",
+    "explicit_content_lyrics": "undefined",
+    "genres": "undefined",
+    "nb_tracks": "undefined",
+    "share": "undefined",
+    "upc": "undefined",
+    "label" : "undefined"
+  }],
+  "albumTestResult" : [
+    {
+        "id": 294609352,
+        "title": "Homework (25th Anniversary Edition)",
+        "link": "https://www.deezer.com/album/294609352",
+        "cover": "https://api.deezer.com/album/294609352/image",
+        "coverSmall":
+            "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/56x56-000000-80-0-0.jpg",
+        "coverMedium":
+            "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/250x250-000000-80-0-0.jpg",
+        "coverBig":
+            "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/500x500-000000-80-0-0.jpg",
+        "coverXl":
+            "https://e-cdns-images.dzcdn.net/images/cover/117dcf85bdf0851347403796521d1e9d/1000x1000-000000-80-0-0.jpg",
+        "md5Image": "117dcf85bdf0851347403796521d1e9d",
+        "genreId": 113,
+        "fans": 9099,
+        "releaseDate": "1997-01-20",
+        "recordType": "album",
+        "tracklist": "https://api.deezer.com/album/294609352/tracks",
+        "explicitLyrics": false,
+        "type": "album",
+        "alternative": "undefined",
+        "artist": "undefined",
+        "available": "undefined",
+        "contributors": "undefined",
+        "duration": "undefined",
+        "explicitContentCover": "undefined",
+        "explicitContentLyrics": "undefined",
+        "genres": "undefined",
+        "nbTracks": "undefined",
+        "share": "undefined",
+        "upc": "undefined",
+        "label" : "undefined"
+    }
+]
+}

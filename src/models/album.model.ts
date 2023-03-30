@@ -7,7 +7,7 @@ export class Album {
     link: string;
     share: string;
     cover: string;
-    coverMail: string;
+    coverSmall: string;
     coverMedium: string;
     coverBig: string;
     coverXl: string;
@@ -16,6 +16,7 @@ export class Album {
     label: string;
     nbTracks: number;
     duration: number;
+    md5Image: string;
     fans: number;
     releaseDate: string;
     recordType: string;
@@ -36,7 +37,7 @@ export class Album {
         link: string,
         share: string,
         cover: string,
-        coverMail: string,
+        coverSmall: string,
         coverMedium: string,
         coverBig: string,
         coverXl: string,
@@ -45,6 +46,7 @@ export class Album {
         label: string,
         nbTracks: number,
         duration: number,
+        md5Image: string,
         fans: number,
         releaseDate: string,
         recordType: string,
@@ -64,7 +66,7 @@ export class Album {
         this.link = link;
         this.share = share;
         this.cover = cover;
-        this.coverMail = coverMail;
+        this.coverSmall = coverSmall;
         this.coverMedium = coverMedium;
         this.coverBig = coverBig;
         this.coverXl = coverXl;
@@ -73,6 +75,7 @@ export class Album {
         this.label = label;
         this.nbTracks = nbTracks;
         this.duration = duration;
+        this.md5Image = md5Image;
         this.fans = fans;
         this.releaseDate = releaseDate;
         this.recordType = recordType;

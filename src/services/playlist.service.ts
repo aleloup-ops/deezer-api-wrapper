@@ -8,7 +8,7 @@ export class DeezerPlaylists {
         try {
             const response = await axiosInstance.get(`user/me/playlists?access_token=${accessToken}`);
             const playlistsData: any[] = response.data.data;
-            let playlists: Playlist[] = [];
+            const playlists: Playlist[] = [];
 
             try {
                 playlistsData.map((data) => {
@@ -28,7 +28,7 @@ export class DeezerPlaylists {
     }
 
     public async getTracklist(playlistId: number): Promise<Track[]> {
-        let tracks: Track[] = [];
+        const tracks: Track[] = [];
 
         try {
             // Initial request

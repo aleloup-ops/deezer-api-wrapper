@@ -1,10 +1,19 @@
 import axiosInstance from '../config/axios.instance';
 import { Album, Artist, Playlist, Track, User } from '../models';
-import { getAccessToken, setAccessToken, DeezerApiError, generatePlaylist, generateTrack, generateArtist, generateUser, generateAlbum } from '../utils';
+import {
+    getAccessToken,
+    setAccessToken,
+    DeezerApiError,
+    generatePlaylist,
+    generateTrack,
+    generateArtist,
+    generateUser,
+    generateAlbum,
+} from '../utils';
 
 export class DeezerArtists {
     public getTopTracks = async (artistId: number): Promise<Track[]> => {
-        let tracks: Track[] = [];
+        const tracks: Track[] = [];
         try {
             // Initial request
             const url = `/artist/${artistId}/top?access_token=${getAccessToken()}`;
@@ -14,7 +23,7 @@ export class DeezerArtists {
 
             // Add initial tracks to the array
             tracksData.map((track: any) => {
-              tracks.push(generateTrack(track));
+                tracks.push(generateTrack(track));
             });
 
             // Keep making requests until there is no more "next" key in the response
@@ -25,7 +34,7 @@ export class DeezerArtists {
 
                     // Add the new tracks to the array
                     response.data.data.map((track: any) => {
-                      tracks.push(generateTrack(track));
+                        tracks.push(generateTrack(track));
                     });
                 } catch (error) {
                     throw new DeezerApiError(
@@ -40,7 +49,7 @@ export class DeezerArtists {
     };
 
     public getAlbums = async (artistId: number): Promise<Album[]> => {
-        let albums: Album[] = [];
+        const albums: Album[] = [];
         try {
             // Initial request
             const url = `/artist/${artistId}/albums?access_token=${getAccessToken()}`;
@@ -50,7 +59,7 @@ export class DeezerArtists {
 
             // Add initial albums to the array
             albumsData.map((album: any) => {
-              albums.push(generateAlbum(album));
+                albums.push(generateAlbum(album));
             });
 
             // Keep making requests until there is no more "next" key in the response
@@ -61,7 +70,7 @@ export class DeezerArtists {
 
                     // Add the new albums to the array
                     response.data.data.map((album: any) => {
-                      albums.push(generateAlbum(album));
+                        albums.push(generateAlbum(album));
                     });
                 } catch (error) {
                     throw new DeezerApiError(
@@ -79,7 +88,7 @@ export class DeezerArtists {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/fans?access_token=${getAccessToken()}`);
             const fansData: any[] = response.data.data;
-            let fans: User[] = [];
+            const fans: User[] = [];
 
             try {
                 fansData.map((data) => {
@@ -98,7 +107,7 @@ export class DeezerArtists {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/related?access_token=${getAccessToken()}`);
             const artistsData: any[] = response.data.data.data;
-            let artists: Artist[] = [];
+            const artists: Artist[] = [];
 
             try {
                 artistsData.map((data) => {
@@ -119,11 +128,11 @@ export class DeezerArtists {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/radio?access_token=${getAccessToken()}`);
             const tracksData: any[] = response.data.data.data;
-            let tracks: Track[] = [];
+            const tracks: Track[] = [];
 
             try {
                 tracksData.map((data) => {
-                  tracks.push(generateTrack(data));
+                    tracks.push(generateTrack(data));
                 });
             } catch (error) {
                 throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
@@ -135,7 +144,7 @@ export class DeezerArtists {
     }
 
     public getPlaylists = async (artistId: number): Promise<Playlist[]> => {
-        let playlists: Playlist[] = [];
+        const playlists: Playlist[] = [];
         try {
             // Initial request
             const url = `/artist/${artistId}/playlists?access_token=${getAccessToken()}`;
