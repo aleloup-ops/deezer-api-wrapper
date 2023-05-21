@@ -1,4 +1,65 @@
 import { Album, Artist, Playlist, Track, User } from '../models';
+import { DeezerApiError } from './deezerApiError';
+
+export const extractAlbumsData = (albumsData: any[], errorMessage: string): Album[] => {
+    const albums: Album[] = [];
+    try {
+        albumsData.map((data) => {
+            albums.push(generateAlbum(data));
+        });
+    } catch (error) {
+        throw new DeezerApiError(errorMessage);
+    }
+    return albums;
+};
+
+export const extractTracksData = (tracksData: any[], errorMessage: string): Track[] => {
+    const tracks: Track[] = [];
+    try {
+        tracksData.map((data) => {
+            tracks.push(generateTrack(data));
+        });
+    } catch (error) {
+        throw new DeezerApiError(errorMessage);
+    }
+    return tracks;
+};
+
+export const extractArtistsData = (artistsData: any[], errorMessage: string): Artist[] => {
+    const artists: Artist[] = [];
+    try {
+        artistsData.map((data) => {
+            artists.push(generateArtist(data));
+        });
+    } catch (error) {
+        throw new DeezerApiError(errorMessage);
+    }
+    return artists
+};
+
+export const extractPlaylistsData = (playlistsData: any[], errorMessage: string): Playlist[] => {
+    const playlists: Playlist[] = [];
+    try {
+        playlistsData.map((data) => {
+            playlists.push(generatePlaylist(data));
+        });
+    } catch (error) {
+        throw new DeezerApiError(errorMessage);
+    }
+    return playlists
+};
+
+export const extractUsersData = (usersData: any[], errorMessage: string): User[] => {
+    const users: User[] = [];
+    try {
+        usersData.map((data) => {
+            users.push(generateUser(data));
+        });
+    } catch (error) {
+        throw new DeezerApiError(errorMessage);
+    }
+    return users
+};
 
 export const generateAlbum = (albumData: any): Album => {
     return new Album(
@@ -48,6 +109,7 @@ export const generateArtist = (artistData: any): Artist => {
         artistData.nb_fan,
         artistData.radio,
         artistData.tracklist,
+        artistData.type,
     );
 };
 

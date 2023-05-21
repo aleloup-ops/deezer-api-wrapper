@@ -19,7 +19,7 @@ export class DeezerArtists {
             const url = `/artist/${artistId}/top?access_token=${getAccessToken()}`;
             let response = await axiosInstance.get(url);
 
-            const tracksData: any[] = response.data.data.data;
+            const tracksData: any[] = response.data.data;
 
             // Add initial tracks to the array
             tracksData.map((track: any) => {
@@ -55,7 +55,7 @@ export class DeezerArtists {
             const url = `/artist/${artistId}/albums?access_token=${getAccessToken()}`;
             let response = await axiosInstance.get(url);
 
-            const albumsData: any[] = response.data.data.data;
+            const albumsData: any[] = response.data.data;
 
             // Add initial albums to the array
             albumsData.map((album: any) => {
@@ -95,18 +95,18 @@ export class DeezerArtists {
                     fans.push(generateUser(data));
                 });
             } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
+                throw new DeezerApiError('Invalid fans data');
             }
             return fans;
         } catch (error) {
-            throw new DeezerApiError(`Error getting albums for artist ${artistId}: ${(error as Error).message}`);
+            throw new DeezerApiError(`Error getting fans for artist ${artistId}: ${(error as Error).message}`);
         }
     }
 
     public async getRelatedArtists(artistId: number): Promise<Artist[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/related?access_token=${getAccessToken()}`);
-            const artistsData: any[] = response.data.data.data;
+            const artistsData: any[] = response.data.data;
             const artists: Artist[] = [];
 
             try {
@@ -114,7 +114,7 @@ export class DeezerArtists {
                     artists.push(generateArtist(data));
                 });
             } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
+                throw new DeezerApiError('Invalid artists data');
             }
             return artists;
         } catch (error) {
@@ -127,7 +127,7 @@ export class DeezerArtists {
     public async getRadio(artistId: number): Promise<Track[]> {
         try {
             const response = await axiosInstance.get(`/artist/${artistId}/radio?access_token=${getAccessToken()}`);
-            const tracksData: any[] = response.data.data.data;
+            const tracksData: any[] = response.data.data;
             const tracks: Track[] = [];
 
             try {
@@ -135,7 +135,7 @@ export class DeezerArtists {
                     tracks.push(generateTrack(data));
                 });
             } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
+                throw new DeezerApiError('Invalid tracks data');
             }
             return tracks;
         } catch (error) {
@@ -150,7 +150,7 @@ export class DeezerArtists {
             const url = `/artist/${artistId}/playlists?access_token=${getAccessToken()}`;
             let response = await axiosInstance.get(url);
 
-            const playlistsData: any[] = response.data.data.data;
+            const playlistsData: any[] = response.data.data;
 
             // Add initial playlists to the array
             playlistsData.map((playlist: any) => {
@@ -164,7 +164,9 @@ export class DeezerArtists {
                     response = await axiosInstance.get(response.data.next);
 
                     // Add the new playlists to the array
-                    playlists.push(generatePlaylist(response.data.data));
+                    response.data.data.map((playlist: any) => {
+                        playlists.push(generatePlaylist(playlist));
+                    });
                 } catch (error) {
                     throw new DeezerApiError(
                         `Error getting next page of playlists for artist ${artistId}: ${(error as Error).message}`,

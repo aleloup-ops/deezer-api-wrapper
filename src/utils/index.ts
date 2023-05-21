@@ -1,6 +1,17 @@
 import { DeezerApiError } from './deezerApiError';
 import { getAccessToken, setAccessToken } from './credentials';
-import { generateAlbum, generateArtist, generatePlaylist, generateTrack, generateUser } from './generateModel';
+import {
+    generateAlbum,
+    generateArtist,
+    generatePlaylist,
+    generateTrack,
+    generateUser,
+    extractAlbumsData,
+    extractPlaylistsData,
+    extractArtistsData,
+    extractTracksData,
+    extractUsersData,
+} from './generateModel';
 
 export {
     DeezerApiError,
@@ -11,4 +22,9 @@ export {
     generatePlaylist,
     generateTrack,
     generateUser,
+    extractAlbumsData,
+    extractPlaylistsData,
+    extractArtistsData,
+    extractTracksData,
+    extractUsersData,
 };

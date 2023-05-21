@@ -12,6 +12,7 @@ export class Artist {
     nbFan: number;
     radio: boolean;
     tracklist: string;
+    type: string;
 
     constructor(
         id: number,
@@ -27,6 +28,7 @@ export class Artist {
         nbFan: number,
         radio: boolean,
         tracklist: string,
+        type: string,
     ) {
         this.id = id;
         this.name = name;
@@ -41,5 +43,6 @@ export class Artist {
         this.nbFan = nbFan;
         this.radio = radio;
         this.tracklist = tracklist;
+        this.type = type;
     }
 }

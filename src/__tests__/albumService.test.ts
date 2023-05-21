@@ -11,33 +11,6 @@ const deezerAlbums = new DeezerAlbums();
 const mockAxios = new MockAdapter(axiosInstance);
 const albumId = 123;
 
-describe('DeezerAlbums.getFavouriteAlbums', () => {
-    afterEach(() => {
-        mockAxios.reset();
-    });
-
-    it('should return an array of albums', async () => {
-        mockAxios.onGet(`user/me/albums?access_token=`).reply(200, {
-            data: albumData.albumTestData,
-        });
-
-        const response = await deezerAlbums.getFavouriteAlbums();
-        expect(response).toEqual(albumData.albumTestResult);
-    });
-
-    it('should return an error', async () => {
-        const errorMessage = 'Request failed with status code 500';
-
-        mockAxios.onGet(`user/me/albums?access_token=`).reply(500, {
-            errorMessage,
-        });
-
-        await expect(deezerAlbums.getFavouriteAlbums()).rejects.toThrowError(
-            new DeezerApiError(`Error getting favourite albums: ${errorMessage}`),
-        );
-    });
-});
-
 describe('DeezerAlbums.AddToFavourite', () => {
     afterEach(() => {
         mockAxios.reset();
@@ -106,6 +79,18 @@ describe('DeezerAlbums.getFans', () => {
         expect(response).toEqual(userData.userTestResult);
     });
 
+    it('shoud detect invalid data', async () => {
+        mockAxios.onGet(`albums/${albumId}/fans?access_token=`).reply(200, {
+            data: {
+                wrong_data: 'wrong_data',
+            },
+        });
+
+        await expect(deezerAlbums.getFans(albumId)).rejects.toThrowError(
+            new DeezerApiError('Error getting fans: Invalid fans data'),
+        );
+    });
+
     it('should return an error', async () => {
         const errorMessage = 'Request failed with status code 500';
 
@@ -120,41 +105,40 @@ describe('DeezerAlbums.getFans', () => {
 });
 
 describe('DeezerAlbums.getTracks', () => {
-  afterEach(() => {
-    mockAxios.reset();
-  });
-
-  it('should return an array of tracks', async () => {
-    mockAxios.onGet(`album/${albumId}/tracks?access_token=`).reply(200, {
-      data: trackData.trackTestData,
+    afterEach(() => {
+        mockAxios.reset();
     });
 
-    const response = await deezerAlbums.getTracks(albumId);
-    expect(response).toEqual(trackData.trackTestResult);
-  });
+    it('should return an array of tracks', async () => {
+        mockAxios.onGet(`album/${albumId}/tracks?access_token=`).reply(200, {
+            data: trackData.trackTestData,
+        });
 
-  it('should return an error', async () => {
-    const errorMessage = 'Request failed with status code 500';
-
-    mockAxios.onGet(`album/${albumId}/tracks?access_token=`).reply(500, {
-      errorMessage,
+        const response = await deezerAlbums.getTracks(albumId);
+        expect(response).toEqual(trackData.trackTestResult);
     });
 
-    await expect(deezerAlbums.getTracks(albumId)).rejects.toThrowError(
-      new DeezerApiError(`Error getting tracks: ${errorMessage}`),
-    );
-  });
+    it('should detect invalid data', async () => {
+        mockAxios.onGet(`album/${albumId}/tracks?access_token=`).reply(200, {
+            data: {
+                wrong_data: 'wrong_data',
+            },
+        });
 
-  it('should return an error', async () => {
-    const errorMessage = 'Request failed with status code 500';
-
-    mockAxios.onGet(`album/${albumId}/tracks?access_token=`).reply(500, {
-      errorMessage,
+        await expect(deezerAlbums.getTracks(albumId)).rejects.toThrowError(
+            new DeezerApiError(`Error getting tracks: Invalid tracks data`),
+        );
     });
 
-    await expect(deezerAlbums.getTracks(albumId)).rejects.toThrowError(
-      new DeezerApiError(`Error getting tracks: ${errorMessage}`),
-    );
-  });
+    it('should return an error', async () => {
+        const errorMessage = 'Request failed with status code 500';
 
+        mockAxios.onGet(`album/${albumId}/tracks?access_token=`).reply(500, {
+            errorMessage,
+        });
+
+        await expect(deezerAlbums.getTracks(albumId)).rejects.toThrowError(
+            new DeezerApiError(`Error getting tracks: ${errorMessage}`),
+        );
+    });
 });

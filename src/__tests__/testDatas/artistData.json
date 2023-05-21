@@ -1,0 +1,46 @@
+{
+  "artistTestData": [
+    {
+        "id": 13358,
+        "name": "Kavinsky",
+        "link": "https://www.deezer.com/artist/13358",
+        "share": "undefined",
+        "picture": "https://api.deezer.com/artist/13358/image",
+        "picture_small":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/56x56-000000-80-0-0.jpg",
+        "picture_medium":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/250x250-000000-80-0-0.jpg",
+        "picture_big":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/500x500-000000-80-0-0.jpg",
+        "picture_xl":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/1000x1000-000000-80-0-0.jpg",
+        "nb_album": 10,
+        "nb_fan": 405166,
+        "radio": true,
+        "tracklist": "https://api.deezer.com/artist/13358/top?limit=50",
+        "type": "artist"
+    }
+  ],
+  "artistTestResult": [
+    {
+        "id": 13358,
+        "name": "Kavinsky",
+        "link": "https://www.deezer.com/artist/13358",
+        "share": "undefined",
+        "picture": "https://api.deezer.com/artist/13358/image",
+        "pictureSmall":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/56x56-000000-80-0-0.jpg",
+        "pictureMedium":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/250x250-000000-80-0-0.jpg",
+        "pictureBig":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/500x500-000000-80-0-0.jpg",
+        "pictureXl":
+            "https://e-cdns-images.dzcdn.net/images/artist/109f6a90627dbcf043def392d50b0c72/1000x1000-000000-80-0-0.jpg",
+        "nbAlbum": 10,
+        "nbFan": 405166,
+        "radio": true,
+        "tracklist": "https://api.deezer.com/artist/13358/top?limit=50",
+        "type": "artist"
+    }
+  ]
+}

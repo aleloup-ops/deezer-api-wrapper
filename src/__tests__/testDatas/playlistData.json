@@ -1,0 +1,76 @@
+{
+  "playlistTestData": [
+    {
+        "id": 9248387402,
+        "title": "Playlist 1",
+        "duration": 4507,
+        "public": true,
+        "is_loved_track": false,
+        "collaborative": false,
+        "nb_tracks": 22,
+        "fans": 0,
+        "link": "https://www.deezer.com/playlist/9248387402",
+        "picture": "https://api.deezer.com/playlist/9248387402/image",
+        "picture_small":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/56x56-000000-80-0-0.jpg",
+        "picture_medium":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/250x250-000000-80-0-0.jpg",
+        "picture_big":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/500x500-000000-80-0-0.jpg",
+        "picture_xl":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/1000x1000-000000-80-0-0.jpg",
+        "checksum": "c49e2e65a7915d40825fe13933095672",
+        "tracklist": "https://api.deezer.com/playlist/9248387402/tracks",
+        "creation_date": "2021-07-06 22:15:46",
+        "md5_image":
+            "a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05",
+        "picture_type": "cover",
+        "time_add": 1625609874,
+        "time_mod": 1679235817,
+        "creator": {
+            "id": 647587021,
+            "name": "Shaymin",
+            "tracklist": "https://api.deezer.com/user/647587021/flow",
+            "type": "user"
+        },
+        "type": "playlist"
+    }
+  ],
+  "playlistTestResult": [
+    {
+        "id": 9248387402,
+        "title": "Playlist 1",
+        "duration": 4507,
+        "public": true,
+        "isLovedTrack": false,
+        "collaborative": false,
+        "nbTracks": 22,
+        "fans": 0,
+        "link": "https://www.deezer.com/playlist/9248387402",
+        "picture": "https://api.deezer.com/playlist/9248387402/image",
+        "pictureSmall":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/56x56-000000-80-0-0.jpg",
+        "pictureMedium":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/250x250-000000-80-0-0.jpg",
+        "pictureBig":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/500x500-000000-80-0-0.jpg",
+        "pictureXl":
+            "https://e-cdns-images.dzcdn.net/images/cover/a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05/1000x1000-000000-80-0-0.jpg",
+        "checksum": "c49e2e65a7915d40825fe13933095672",
+        "tracklist": "https://api.deezer.com/playlist/9248387402/tracks",
+        "creationDate": "2021-07-06 22:15:46",
+        "md5Image":
+            "a3579ac7cad97e6e0ad577057e69b604-3455d2d7101ec09f01103c2e4104a81c-6986cd7fa20ca76fe5871a9d0ee8b821-328aac1ce6ae25238b6c2b3ef8035d05",
+        "pictureType": "cover",
+        "timeAdd": 1625609874,
+        "timeMod": 1679235817,
+        "creator": {
+            "id": 647587021,
+            "name": "Shaymin",
+            "tracklist": "https://api.deezer.com/user/647587021/flow",
+            "type": "user"
+        },
+        "type": "playlist"
+    }
+  ]
+}

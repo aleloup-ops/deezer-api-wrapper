@@ -1,3 +1,3 @@
-import { DeezerAuth, DeezerPlaylists, DeezerArtists, DeezerAlbums } from './services';
+import { DeezerAuth, DeezerPlaylists, DeezerArtists, DeezerAlbums, DeezerUsers } from './services';
 
-export { DeezerAuth, DeezerPlaylists };
+export { DeezerAuth, DeezerPlaylists, DeezerArtists, DeezerAlbums, DeezerUsers };

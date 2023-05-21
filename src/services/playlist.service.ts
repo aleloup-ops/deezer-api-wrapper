@@ -1,5 +1,5 @@
 import axiosInstance from '../config/axios.instance';
-import { Artist, Playlist, Track, User } from '../models';
+import { Playlist, Track, User } from '../models';
 import { DeezerApiError, generatePlaylist, generateTrack, generateUser, getAccessToken } from '../utils';
 
 export class DeezerPlaylists {
@@ -15,11 +15,7 @@ export class DeezerPlaylists {
                     playlists.push(generatePlaylist(data));
                 });
             } catch (error) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ' + (error as Error).message);
-            }
-
-            if (!Array.isArray(playlists)) {
-                throw new DeezerApiError('Invalid data format returned from Deezer API : ');
+                throw new DeezerApiError('Invalid playlists data');
             }
             return playlists;
         } catch (error) {
@@ -43,13 +39,15 @@ export class DeezerPlaylists {
             });
 
             // Keep making requests until there is no more "next" key in the response
-            while (response.data.next) {
+            while (response.data.data.next) {
                 try {
                     // Make the next request
-                    response = await axiosInstance.get(response.data.next);
+                    response = await axiosInstance.get(response.data.data.next);
 
                     // Add the new tracks to the array
-                    tracks.push(generateTrack(response.data.data));
+                    response.data.data.map((track: any) => {
+                        tracks.push(generateTrack(track));
+                    });
                 } catch (error) {
                     throw new DeezerApiError(
                         `Error getting next page of tracks for playlist ${playlistId}: ${(error as Error).message}`,
